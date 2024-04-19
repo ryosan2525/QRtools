@@ -18,19 +18,28 @@ document.getElementById('btn').onclick = () => {
 
 
 
-const media = navigator.mediaDevices.getUserMedia({ audio: false, video: {width:640, height:480} })
-   .then((stream) => {
-      video.srcObject = stream;
-      video.onloadeddata = () => {
-         video.play();
-         contentWidth = video.clientWidth;
-         contentHeight = video.clientHeight;
-         canvasUpdate();
-         checkImage();
-      }
-   }).catch((e) => {
-      console.log(e);
-   });
+const media = navigator.mediaDevices.getUserMedia({ 
+    audio: false, 
+    video: { 
+        width: 640, 
+        height: 480, 
+        facingMode: 'environment' // 外部カメラを使用する
+    } 
+}).then((stream) => {
+    video.srcObject = stream;
+    video.onloadeddata = () => {
+        video.play();
+        contentWidth = video.clientWidth;
+        contentHeight = video.clientHeight;
+        canvasUpdate();
+        checkImage();
+    };
+}).catch((e) => {
+    console.log(e);
+});
+
+
+
 
 // カメラ映像のキャンバス表示
 const cvs = document.getElementById('camera-canvas');
