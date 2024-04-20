@@ -1,12 +1,6 @@
 #video {
   position: absolute;
-  top: 30px;
-  left: 30px;
   visibility: hidden;
-  padding: 0;
-  margin: 0;
-  width: 93%;
-  height: auto;
   overflow: unset;
   border: none !important;
   outline: none !important;
@@ -15,38 +9,26 @@
 
 #camera-canvas {
   position: absolute;
-  top: 30px;
-  left: 30px;
-  width: 93%;
+  width: 90%;
   height: auto;
-  z-index: 50;
-  padding: 0;
-  margin: 0;
-  overflow: unset;
-  border: none !important;
-  outline: none !important;
-  display: block;
-
+  text-align: center;
+  border: 5px solid;
+  border-color: #999999;
 }
 
-#rect-canvas {
+
+
+
+
+#qr-msg {
   position: absolute;
-  top: 30px;
-  left: 30px;
-  width: 93%;
-  height: auto;
-
-  z-index: 100;
-  padding: 0;
-  margin: 0;
-  overflow: unset;
-  border: none !important;
-  outline: none !important;
-  display: block;
-
+  font-size: 100%;
 }
 
-ul {
-  position: absolute;
-  bottom: 10px;
+span{
+  margin:15px;
+  padding:15px;
+}
+.wrap4 span{
+  display:block;
 }

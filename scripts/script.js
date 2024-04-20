@@ -37,8 +37,8 @@ const canvasUpdate = () => {
 }
 
 // QRコードの検出
-const rectCvs = document.getElementById('rect-canvas');
-const rectCtx =  rectCvs.getContext('2d');
+// const rectCvs = document.getElementById('rect-canvas');
+// const rectCtx =  rectCvs.getContext('2d');
 const checkImage = () => {
    // imageDataを作る
    const imageData = ctx.getImageData(0, 0, contentWidth, contentHeight);
@@ -48,36 +48,38 @@ const checkImage = () => {
    // 検出結果に合わせて処理を実施
    if (code) {
       console.log("QRcodeが見つかりました", code);
-      drawRect(code.location);
-      document.getElementById('qr-msg').textContent = `QRコード：`+code.data;
+      cvs.style.borderColor = "red"
+    //   drawRect(code.location);
+      document.getElementById('qr-msg').textContent = `QRコード:`+code.data;
       playPitche(code.data);
    } else {
-      console.log("QRcodeが見つかりません…", code);
-      rectCtx.clearRect(0, 0, contentWidth, contentHeight);
-      document.getElementById('qr-msg').textContent = `QRコード: 見つかりません`;
+        cvs.style.borderColor = "#999999"
+    //   console.log("QRcodeが見つかりません…", code);
+    //   rectCtx.clearRect(0, 0, contentWidth, contentHeight);
+    //   document.getElementById('qr-msg').textContent = `QRコード:見つかりません`;
    }
    setTimeout(()=>{ checkImage() }, 300);
 }
 
-// 四辺形の描画
-const drawRect = (location) => {
-   rectCvs.width = contentWidth;
-   rectCvs.height = contentHeight;
-   drawLine(location.topLeftCorner, location.topRightCorner);
-   drawLine(location.topRightCorner, location.bottomRightCorner);
-   drawLine(location.bottomRightCorner, location.bottomLeftCorner);
-   drawLine(location.bottomLeftCorner, location.topLeftCorner)
-}
+// // 四辺形の描画
+// const drawRect = (location) => {
+//    rectCvs.width = contentWidth;
+//    rectCvs.height = contentHeight;
+//    drawLine(location.topLeftCorner, location.topRightCorner);
+//    drawLine(location.topRightCorner, location.bottomRightCorner);
+//    drawLine(location.bottomRightCorner, location.bottomLeftCorner);
+//    drawLine(location.bottomLeftCorner, location.topLeftCorner)
+// }
 
-// 線の描画
-const drawLine = (begin, end) => {
-   rectCtx.lineWidth = 4;
-   rectCtx.strokeStyle = "#F00";
-   rectCtx.beginPath();
-   rectCtx.moveTo(begin.x, begin.y);
-   rectCtx.lineTo(end.x, end.y);
-   rectCtx.stroke();
-}
+// // 線の描画
+// const drawLine = (begin, end) => {
+//    rectCtx.lineWidth = 4;
+//    rectCtx.strokeStyle = "#F00";
+//    rectCtx.beginPath();
+//    rectCtx.moveTo(begin.x, begin.y);
+//    rectCtx.lineTo(end.x, end.y);
+//    rectCtx.stroke();
+// }
 // 指定周波数音を出す
 let audioCtx = new AudioContext();
 const playMelody = (hz) => {

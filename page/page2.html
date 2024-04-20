@@ -2,20 +2,31 @@
 <head>
     <title>QRコードのテスト</title>
     <link rel="stylesheet" href="../style.css" />
-
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
-  <div id="wrapper">
-    <video id="video" autoplay muted playsinline></video>
+  <div class="wrap4">
+    <span>
+      <label id="qr-msg">QRコード:見つかりません</label>
+    </span>
     <div>
-      <canvas id="camera-canvas"></canvas>
-      <canvas id="rect-canvas"></canvas>
+      <span>
+        <canvas id="camera-canvas"></canvas>
+      </span>
     </div>
-    <ul>
-      <span  id="qr-msg">QRコード: 見つかりません</span>
-    </ul>
 
   </div>
+
+
+
+
+
+
+
+
+
+
+  <video id="video" autoplay muted playsinline></video>
   <script src="../scripts/jsQR.js"></script>
   <script src="../scripts/script.js"></script>
 </body>
