@@ -3,21 +3,6 @@ const video = document.getElementById('video');
 let contentWidth;
 let contentHeight;
 
-let cameraFacingIsUser = false; 
-let facingText = document.getElementById('camera-facing');
-facingText.innerText = "インカメラ";
-document.getElementById('btn').onclick = () => {
-    if(cameraFacingIsUser){
-        facingText.innerText = "アウトカメラ";
-        cameraFacingIsUser = false;
-    }else{
-        facingText.innerText = "インカメラ";
-        cameraFacingIsUser = true;
-    } 
-}
-
-
-
 const media = navigator.mediaDevices.getUserMedia({ 
     audio: false, 
     video: { 
@@ -64,14 +49,14 @@ const checkImage = () => {
    if (code) {
       console.log("QRcodeが見つかりました", code);
       drawRect(code.location);
-      document.getElementById('qr-msg').textContent = `QRコード：${code.data}`;
+      document.getElementById('qr-msg').textContent = `QRコード：`+code.data;
       playPitche(code.data);
    } else {
       console.log("QRcodeが見つかりません…", code);
       rectCtx.clearRect(0, 0, contentWidth, contentHeight);
       document.getElementById('qr-msg').textContent = `QRコード: 見つかりません`;
    }
-   setTimeout(()=>{ checkImage() }, 500);
+   setTimeout(()=>{ checkImage() }, 300);
 }
 
 // 四辺形の描画
@@ -102,7 +87,7 @@ const playMelody = (hz) => {
     osc.connect(audDes);
     osc.start = osc.start || osc.noteOn;
     osc.start();
-    setTimeout(function() { osc.stop(0);}, 200);
+    setTimeout(function() { osc.stop(0);}, 50);
 }
 
 // ドレミファソラシドを鳴らす
